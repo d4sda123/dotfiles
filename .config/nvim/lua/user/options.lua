@@ -1,6 +1,7 @@
 local cmd = vim.cmd
 local g = vim.g
 local opt = vim.opt
+local exec = vim.api.nvim_exec
 
 g.backup = false
 g.loaded_netrw = 1
@@ -38,5 +39,18 @@ opt.swapfile = false
 opt.hidden = true
 opt.history = 50
 -- opt.lazyredraw = true
+
+exec([[
+  augroup tbtoSp
+    autocmd BufEnter * set expandtab
+    autocmd BufEnter * retab
+  augroup END
+]], false)
+
+exec([[
+  augroup templates
+    autocmd BufNewFile *.* !silent execute '0r $HOME/.config/nvim/templates/'.expand("<afile>:e").'.tmpl'
+  augroup END
+]], false)
 
 cmd([[colorscheme ayu]])

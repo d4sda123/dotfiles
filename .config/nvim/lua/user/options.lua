@@ -2,6 +2,7 @@ local cmd = vim.cmd
 local g = vim.g
 local opt = vim.opt
 local exec = vim.api.nvim_exec
+local uc = vim.api.nvim_add_user_command
 
 g.backup = false
 g.loaded_netrw = 1
@@ -34,23 +35,28 @@ opt.linebreak = true
 opt.scrolloff = 15
 opt.sidescrolloff = 15
 opt.fillchars = "eob: "
-opt.foldmethod = "marker"
 opt.swapfile = false
 opt.hidden = true
 opt.history = 50
 -- opt.lazyredraw = true
+exec(
+    [[
+    augroup tabtospace
+        autocmd BufWritePre * lua vim.lsp.buf.format()
+        autocmd BufWritePre * set expandtab
+        autocmd BufWritePre * retab
+    augroup END
+]],
+    false
+)
 
-exec([[
-  augroup tbtoSp
-    autocmd BufEnter * set expandtab
-    autocmd BufEnter * retab
-  augroup END
-]], false)
-
-exec([[
-  augroup templates
-    autocmd BufNewFile *.* !silent execute '0r $HOME/.config/nvim/templates/'.expand("<afile>:e").'.tmpl'
-  augroup END
-]], false)
+exec(
+    [[
+    augroup templates
+        autocmd BufNewFile *.* !silent execute '0r $HOME/.config/nvim/templates/'.expand("<afile>:e").'.tmpl'
+    augroup END
+]],
+    false
+)
 
 cmd([[colorscheme ayu]])

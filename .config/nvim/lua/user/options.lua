@@ -42,7 +42,6 @@ opt.history = 50
 exec(
     [[
     augroup tabtospace
-        autocmd BufWritePre * lua vim.lsp.buf.format()
         autocmd BufWritePre * set expandtab
         autocmd BufWritePre * retab
     augroup END
@@ -53,7 +52,7 @@ exec(
 exec(
     [[
     augroup templates
-        autocmd BufNewFile *.* !silent execute '0r $HOME/.config/nvim/templates/'.expand("<afile>:e").'.tmpl'
+        autocmd BufNewFile *.* silent! execute '0r $HOME/.config/nvim/templates/'.expand("<afile>:e").'.tmpl'
     augroup END
 ]],
     false

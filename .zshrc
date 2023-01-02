@@ -12,6 +12,9 @@ fpath+="${ZSH_CUSTOM:-"$ZSH/custom"}/plugins/zsh-completions/src"
 # zsh theme
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
+# cursor doesn't work on vmachines
+export WLR_NO_HARDWARE_CURSORS=1 sway
+
 # plugins oh-my-zsh
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 

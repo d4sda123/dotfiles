@@ -17,7 +17,8 @@ input * {
 }
 
 output * bg /usr/share/backgrounds/Jammy-Jellyfish_WP_4096x2304_Grey.png fill
-output Virtual-1 resolution 1920x1080 position 1920,0
+# output Virtual-1 resolution 1920x1080 position 1920,0
+# output Virtual-1 resolution 1918x938 position 1918,0
 
 ### Key bindings
 # Basics:
@@ -150,6 +151,8 @@ bar {
 }
 
 # borders
+# default_border none
+default_floating_border none
 default_border pixel 3
 gaps inner 20
 

@@ -1,6 +1,7 @@
-ranger
-zsh-syntax-highlighthing
-zsh-autosuggestions
-zsh-completions
 
-kitty-theme
+My dotfiles:
+
+WM: Qtile
+Terminal: kitty
+Editor: nvim
+

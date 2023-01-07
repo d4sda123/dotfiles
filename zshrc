@@ -7,7 +7,6 @@ fi
 export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.local/bin/
 export ZSH="$HOME/.oh-my-zsh"
 export EDITOR="nvim"
-export PROMPT_NUMBER=1
 fpath+="${ZSH_CUSTOM:-"$ZSH/custom"}/plugins/zsh-completions/src"
 
 # zsh theme
@@ -29,4 +28,4 @@ alias builds="cd ~/builds/"
 source $ZSH/oh-my-zsh.sh
 
 # load p10k
-[[ ! -f ~/.p10k_$PROMPT_NUMBER.zsh ]] || source ~/.p10k_$PROMPT_NUMBER.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

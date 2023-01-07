@@ -1,19 +1,17 @@
 # p10 prompt
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
-# variables
+# env variables
 export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.local/bin/
 export ZSH="$HOME/.oh-my-zsh"
 export EDITOR="nvim"
+export PROMPT_NUMBER=1
 fpath+="${ZSH_CUSTOM:-"$ZSH/custom"}/plugins/zsh-completions/src"
 
 # zsh theme
-# ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# cursor doesn't work on vmachines
-export WLR_NO_HARDWARE_CURSORS=1 sway
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # plugins oh-my-zsh
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
@@ -23,10 +21,12 @@ alias cat="bat"
 alias catn="/usr/bin/cat"
 alias ls="lsd --group-directories-first"
 alias lsn="/usr/bin/ls --color=tty --group-directories-first"
-alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
+alias dotfiles="cd ~/dotfiles/"
+alias config="cd ~/.config/"
+alias builds="cd ~/builds/"
 
 # load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 # load p10k
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/.p10k_$PROMPT_NUMBER.zsh ]] || source ~/.p10k_$PROMPT_NUMBER.zsh

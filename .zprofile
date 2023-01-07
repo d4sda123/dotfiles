@@ -1,0 +1,1 @@
+echo "" > ~/.zsh_history

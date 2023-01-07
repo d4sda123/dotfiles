@@ -58,4 +58,4 @@ exec(
     false
 )
 
-cmd([[colorscheme ayu]])
+--cmd([[colorscheme ayu]])

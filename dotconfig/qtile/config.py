@@ -32,10 +32,11 @@ right_bar_font = "#FFFFFF"
 
 # Extras
 powerline = {"decorations": [PowerLineDecoration(path="arrow_right")]}
-wallpaper = "/usr/share/backgrounds/Jammy-Jellyfish_WP_4096x2304_Grey.png"
+wallpaper = "~/Imágenes/wallpaper.png"
 
 # Comands to execute
 autoexecute = [
+    f"feh {wallpaper} --bg-scale",
     "picom -b",
     # "volumeicon &",
     "classicmenu-indicator &",
@@ -88,12 +89,7 @@ for i in groups:
 
 layouts = [
     Columns(
-        border_width = 2,
-        border_focus = border_window,
-        border_focus_stack = border_window,
-        border_normal = border_window,
-        border_normal_stack = border_window,
-        border_on_single = True,
+        border_width = 0,
         margin = 20
     ),
     Max(
@@ -110,8 +106,6 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        wallpaper = wallpaper,
-        wallpaper_mode = "stretch",
         top = bar.Bar(
             [
                 widget.CurrentLayoutIcon(
@@ -172,6 +166,7 @@ screens = [
                     background = left_bar_colors[5],
                     foreground = right_bar_font,
                 ),
+                widget.QuickExit(),
             ],
             30,
             background = bar_bg,

@@ -1,6 +1,11 @@
+local lualine_status, lualine = pcall(require, "lualine")
+if not lualine_status then
+	return
+end
+
 local theme = require("lualine.themes.ayu_dark")
 
-require("lualine").setup({
+lualine.setup({
     options = { theme = theme },
     extensions = { "nvim-tree" },
 })

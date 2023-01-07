@@ -1,4 +1,4 @@
-require("impatient")
+require("user.impatient")
 require("user.options")
 require("user.keymaps")
 require("user.packer")

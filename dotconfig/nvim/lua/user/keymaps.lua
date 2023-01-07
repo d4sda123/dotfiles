@@ -9,7 +9,6 @@ map("n", "k", "<nop>", opts)
 map("n", "l", "<nop>", opts)
 
 -- Options
-map("n", "<C-r>", "<cmd>source %<cr>", opts)
 map("n", "w", "<cmd>w<cr>", opts)
 map("n", "q", "<cmd>q<cr>", opts)
 map("n", "n", "nzz", opts)

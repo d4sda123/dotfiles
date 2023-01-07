@@ -1,4 +1,25 @@
-require("mason").setup({
+local mason_status, mason = pcall(require, "mason")
+if not mason_status then
+	return
+end
+
+local mason_lspconfig_status, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not mason_lspconfig_status then
+	return
+end
+
+local lspconfig_status, lspconfig = pcall(require, "lspconfig")
+if not lspconfig_status then
+	return
+end
+
+local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not cmp_nvim_lsp_status then
+	return
+end
+
+
+mason.setup({
     ui = {
         icons = {
             package_installed = "✓",
@@ -9,14 +30,13 @@ require("mason").setup({
     log_level = vim.log.levels.INFO,
     max_concurrent_installers = 4,
 })
-require("mason-lspconfig").setup()
+mason_lspconfig.setup()
 
-local lspconfig = require("lspconfig")
 local servers = { "pyright", "sumneko_lua", "html", "powershell_es", "emmet_ls", "tailwindcss" , "tsserver"}
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 local on_attach = function(client, bufnr)
     local opts = { noremap = true, silent = true }

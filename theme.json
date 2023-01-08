@@ -45,7 +45,7 @@
 					"foreground_templates": [
 						"{{ if or (.Working.Changed) (.Staging.Changed) }}p:git-unstagged{{ end }}",
 						"{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:green-2{{ end }}",
-						"{{ if gt .Ahead 0 }}p:git-changed{ end }}",
+						"{{ if gt .Ahead 0 }}p:git-changed{{ end }}",
 						"{{ if gt .Behind 0 }}p:git-changed{{ end }}"
 					],
 					"template": " {{ .HEAD }} {{ if .Working.Changed }}{{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}<p:red> \uf046 {{ .Staging.String }}</>{{ end }} ",

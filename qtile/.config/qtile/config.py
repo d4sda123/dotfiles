@@ -12,13 +12,14 @@ from qtile_extras import widget
 terminal = "kitty"
 launcher = "ulauncher"
 browser = "brave-browser"
+file_explorer = "nautilus"
 
 # Special keys
 mod = "mod4"
-kleft = "h"
-kright = "k"
-kdown = "j"
-kup = "u"
+kleft = "left"
+kright = "right"
+kdown = "down"
+kup = "up"
 
 # Colors
 left_bar_colors = ["#212630", "#212630", "#212630", "#212630", "#212630", "#212630"]
@@ -41,6 +42,7 @@ autoexecute = [
     # "volumeicon &",
     "classicmenu-indicator &",
     "nm-applet &",
+    "vmtoolsd -n vmusr --blockFd3 &"  # sometimes vmware clipboard doesn't work 
 ]
 
 keys = [
@@ -65,8 +67,9 @@ keys = [
 
     # Launch some apps
     Key([mod], "Return", lazy.spawn(terminal), desc = "Launch terminal"),
-    Key([mod], "r", lazy.spawn(launcher), desc = "Launch launcher"),
+    Key([mod], "r", lazy.spawn(launcher), desc = "Launch app launcher"),
     Key([mod], "f", lazy.spawn(browser), desc = "Launch browser"),
+    Key([mod], "f", lazy.spawn(file_explorer), desc = "Launch file explorer"),
 
     # Others
     Key([mod, "control"], "r", lazy.reload_config(), desc = "Reload the config"),
@@ -83,7 +86,7 @@ for i in groups:
     keys.extend(
         [
             Key([mod], i.name, lazy.group[i.name].toscreen(), desc = "Switch to group {}".format(i.name)),
-            Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group = True), desc="Switch to & move focused window to group {}".format(i.name)),
+            Key([mod, "shift"], i.name, lazy.window.togroup(i.name), desc="Move focused window to group {}".format(i.name)),
         ]
     )
 
@@ -98,7 +101,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font = "Ubuntu",
+    font = "Liberation Mono",
     fontsize = 14,
     padding = 10,
 )
@@ -132,6 +135,10 @@ screens = [
                     padding = 5,
                 ),
                 widget.Spacer(length = 5, **powerline),
+                widget.Pomodoro(
+                    # config pomodoro
+                    **powerline,
+                ),
                 # widget.Net(
                 #     format = "{down} ↓↑ {up}",
                 #     interface = "ens33",
@@ -203,8 +210,6 @@ reconfigure_screens = True
 auto_minimize = True
 wl_input_rules = None
 wmname = "LG3D"
-
-
 
 for cmd in autoexecute:
     os.system(cmd)

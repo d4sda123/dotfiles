@@ -2,7 +2,6 @@ local cmd = vim.cmd
 local g = vim.g
 local opt = vim.opt
 local exec = vim.api.nvim_exec
-local uc = vim.api.nvim_add_user_command
 
 g.backup = false
 g.loaded_netrw = 1
@@ -15,7 +14,7 @@ opt.ignorecase = true
 opt.mouse = "a"
 opt.pumheight = 10
 opt.showmode = false
-opt.showtabline = 2
+opt.showtabline = 1
 opt.smartcase = true
 opt.smartindent = true
 opt.splitbelow = true
@@ -24,21 +23,22 @@ opt.termguicolors = true
 opt.writebackup = false
 opt.shiftwidth = 4
 opt.tabstop = 4
-opt.cursorline = true
-opt.cursorlineopt = "both"
+-- opt.cursorline = true
+-- opt.cursorlineopt = "both"
 opt.number = true
 opt.relativenumber = true
 opt.numberwidth = 6
 opt.signcolumn = "yes"
 opt.wrap = true
 opt.linebreak = true
-opt.scrolloff = 15
-opt.sidescrolloff = 15
-opt.fillchars = "eob: "
+opt.scrolloff = 25
+opt.sidescrolloff = 25
 opt.swapfile = false
 opt.hidden = true
 opt.history = 50
+opt.clipboard = "unnamedplus"
 -- opt.lazyredraw = true
+
 exec(
     [[
     augroup tabtospace
@@ -58,4 +58,4 @@ exec(
     false
 )
 
---cmd([[colorscheme ayu]])
+cmd([[colorscheme ayu]])

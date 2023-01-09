@@ -34,7 +34,8 @@
 					"foreground": "p:blue-3",
 					"template": " {{ .Path }} ",
 					"properties": {
-						"style": "letter"
+						"style": "agnoster_short",
+						"max_depth": 2
 					}
 				},
 				{

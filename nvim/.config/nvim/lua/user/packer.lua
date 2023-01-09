@@ -28,7 +28,7 @@ packer.init({
 })
 
 return packer.startup( function(use)
-	
+
 	-- Principal
         use("wbthomason/packer.nvim")
         use("lewis6991/impatient.nvim")

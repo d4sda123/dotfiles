@@ -20,4 +20,4 @@ alias builds="cd ~/builds/"
 source $ZSH/oh-my-zsh.sh
 
 # oh-my-posh prompt
-eval "$(oh-my-posh init zsh --config ~/dotfiles/theme.json)"
+eval "$(oh-my-posh init zsh --config ~/.theme.json)"

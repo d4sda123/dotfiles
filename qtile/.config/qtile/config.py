@@ -69,7 +69,7 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc = "Launch terminal"),
     Key([mod], "r", lazy.spawn(launcher), desc = "Launch app launcher"),
     Key([mod], "f", lazy.spawn(browser), desc = "Launch browser"),
-    Key([mod], "f", lazy.spawn(file_explorer), desc = "Launch file explorer"),
+    Key([mod], "e", lazy.spawn(file_explorer), desc = "Launch file explorer"),
 
     # Others
     Key([mod, "control"], "r", lazy.reload_config(), desc = "Reload the config"),

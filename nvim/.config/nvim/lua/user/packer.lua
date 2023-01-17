@@ -2,34 +2,34 @@ local fn = vim.fn
 
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-	packer_bootstrap = fn.system({
-		"git",
-		"clone",
-		"--depth",
-		"1",
-		"https://github.com/wbthomason/packer.nvim",
-		install_path,
-	})
-	print("Installing packer ... Close and reopen Neovim")
-	vim.cmd([[packadd packer.nvim]])
+    packer_bootstrap = fn.system({
+        "git",
+        "clone",
+        "--depth",
+        "1",
+        "https://github.com/wbthomason/packer.nvim",
+        install_path,
+    })
+    print("Installing packer ... Close and reopen Neovim")
+    vim.cmd([[packadd packer.nvim]])
 end
 
 local packer_status, packer = pcall(require, "packer")
 if not packer_status then
-	return
+    return
 end
 
 packer.init({
-	display = {
-		open_fn = function()
-			return require("packer.util").float({ border = "rounded" })
-		end,
-	},
+    display = {
+        open_fn = function()
+            return require("packer.util").float({ border = "rounded" })
+        end,
+    },
 })
 
 return packer.startup( function(use)
 
-	-- Principal
+    -- Principal
         use("wbthomason/packer.nvim")
         use("lewis6991/impatient.nvim")
         use("nvim-lua/plenary.nvim")
@@ -76,7 +76,7 @@ return packer.startup( function(use)
         -- GUI
         use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } })
 
-	if packer_bootstrap then
-		require('packer').sync()
-	end
+    if packer_bootstrap then
+        require('packer').sync()
+    end
 end)

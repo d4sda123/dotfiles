@@ -23,8 +23,6 @@ opt.termguicolors = true
 opt.writebackup = false
 opt.shiftwidth = 4
 opt.tabstop = 4
--- opt.cursorline = true
--- opt.cursorlineopt = "both"
 opt.number = true
 opt.relativenumber = true
 opt.numberwidth = 6
@@ -37,7 +35,6 @@ opt.swapfile = false
 opt.hidden = true
 opt.history = 50
 opt.clipboard = "unnamedplus"
--- opt.lazyredraw = true
 
 exec(
     [[

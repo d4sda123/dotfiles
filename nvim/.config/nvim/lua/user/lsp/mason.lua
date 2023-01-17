@@ -1,21 +1,21 @@
 local mason_status, mason = pcall(require, "mason")
 if not mason_status then
-	return
+    return
 end
 
 local mason_lspconfig_status, mason_lspconfig = pcall(require, "mason-lspconfig")
 if not mason_lspconfig_status then
-	return
+    return
 end
 
 local lspconfig_status, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status then
-	return
+    return
 end
 
 local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not cmp_nvim_lsp_status then
-	return
+    return
 end
 
 
@@ -32,7 +32,8 @@ mason.setup({
 })
 mason_lspconfig.setup()
 
-local servers = { "pyright", "sumneko_lua", "html", "powershell_es", "emmet_ls", "tailwindcss" , "tsserver"}
+local servers = { "bashls", "emmet_ls", "html", "pylsp", "pyright", "sumneko_lua",
+    "tailwindcss", "tsserver"}
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true

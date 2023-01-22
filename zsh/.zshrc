@@ -1,7 +1,3 @@
-# env variables
-export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.local/bin/
-export ZSH="$HOME/.oh-my-zsh"
-export EDITOR="nvim"
 fpath+="${ZSH_CUSTOM:-"$ZSH/custom"}/plugins/zsh-completions/src"
 
 # plugins oh-my-zsh
@@ -15,6 +11,8 @@ alias lsn="/usr/bin/ls --color=tty --group-directories-first"
 alias dotfiles="cd ~/dotfiles/"
 alias config="cd ~/.config/"
 alias builds="cd ~/builds/"
+alias ...="../.."
+alias ....="../../.."
 
 # load oh-my-zsh
 source $ZSH/oh-my-zsh.sh

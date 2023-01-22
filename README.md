@@ -1,5 +1,5 @@
 
-My dotfiles:
+## My dotfiles:
 
 Shell: Zsh
 WM: Qtile

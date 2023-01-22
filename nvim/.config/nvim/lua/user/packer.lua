@@ -76,6 +76,9 @@ return packer.startup( function(use)
         -- GUI
         use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } })
 
+        -- Other
+        use("startup-nvim/startup.nvim")
+
     if packer_bootstrap then
         require('packer').sync()
     end

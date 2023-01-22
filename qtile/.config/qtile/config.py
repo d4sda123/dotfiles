@@ -10,7 +10,6 @@ from qtile_extras import widget
 
 # Default apps
 terminal = "kitty"
-launcher = "ulauncher"
 browser = "brave-browser"
 file_explorer = "nautilus"
 
@@ -33,11 +32,11 @@ right_bar_font = "#FFFFFF"
 
 # Extras
 powerline = {"decorations": [PowerLineDecoration(path="arrow_right")]}
-wallpaper = "~/Imágenes/wallpaper.png"
+wallpaper = "~/Pictures/*"
 
 # Comands to execute
 autoexecute = [
-    f"feh {wallpaper} --bg-scale",
+    f"feh {wallpaper} --bg-scale --randomize",
     "picom -b",
     # "volumeicon &",
     "classicmenu-indicator &",
@@ -67,7 +66,6 @@ keys = [
 
     # Launch some apps
     Key([mod], "Return", lazy.spawn(terminal), desc = "Launch terminal"),
-    Key([mod], "r", lazy.spawn(launcher), desc = "Launch app launcher"),
     Key([mod], "f", lazy.spawn(browser), desc = "Launch browser"),
     Key([mod], "e", lazy.spawn(file_explorer), desc = "Launch file explorer"),
 
@@ -96,14 +94,14 @@ layouts = [
         margin = 20
     ),
     Max(
-        margin = 20,
+        margin = 0,
     ),
 ]
 
 widget_defaults = dict(
-    font = "Liberation Mono",
-    fontsize = 14,
-    padding = 10,
+    font = "FiraCode Nerd Font",
+    fontsize = 11,
+    padding = 8,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -112,6 +110,7 @@ screens = [
         top = bar.Bar(
             [
                 widget.CurrentLayoutIcon(
+                    custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")],
                     scale = 0.7
                 ),
                 widget.GroupBox(
@@ -122,22 +121,17 @@ screens = [
                     # inactive = font_color,
                     padding = 5,
                 ),
-                widget.TaskList(
-                    borderwidth = 0,
-                    fontsize = 0,
-                    icon_size = 22,
-                    highlight_method = "none",
-                    padding = 3,
-                ),
-                widget.Notify(),
+                # widget.TaskList(
+                #     borderwidth = 0,
+                #     fontsize = 0,
+                #     icon_size = 20,
+                #     highlight_method = "none",
+                #     padding = 3,
+                # ),
+                widget.Spacer(),
                 widget.Systray(
                     icon_size = 20,
-                    padding = 5,
-                ),
-                widget.Spacer(length = 5, **powerline),
-                widget.Pomodoro(
-                    # config pomodoro
-                    **powerline,
+                    padding = 3,
                 ),
                 # widget.Net(
                 #     format = "{down} ↓↑ {up}",
@@ -146,11 +140,11 @@ screens = [
                 #     foreground = bar_right_font,
                 #     **powerline
                 # ),
-                # widget.PulseVolume(
-                #     background = colors[1],
-                #     foreground = bar_right_font,
-                #     **powerline
-                # ),
+                widget.PulseVolume(
+                    background = left_bar_colors[1],
+                    foreground = right_bar_font,
+                    **powerline
+                ),
                 widget.DF(
                     visible_on_warn = False,
                     background = left_bar_colors[2],
@@ -173,9 +167,8 @@ screens = [
                     background = left_bar_colors[5],
                     foreground = right_bar_font,
                 ),
-                widget.QuickExit(),
             ],
-            30,
+            25,
             background = bar_bg,
         ),
     ),
@@ -185,6 +178,7 @@ mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(), start = lazy.window.get_position()),
     Drag([mod], "Button3", lazy.window.set_size_floating(), start = lazy.window.get_size()),
     Click([mod], "Button2", lazy.window.bring_to_front()),
+    Click([mod], "Button3", lazy.window.toggle_floating()),
 ]
 
 dgroups_key_binder = None
@@ -193,7 +187,7 @@ follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 floating_layout = Floating(
-    border_width = 0,
+    border_width = 2,
     float_rules = [
         *Floating.default_float_rules,
         Match(wm_class = "confirmreset"),  # gitk

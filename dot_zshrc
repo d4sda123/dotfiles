@@ -1,0 +1,19 @@
+# include path
+fpath+="${ZSH_CUSTOM:-"$ZSH/custom"}/plugins/zsh-completions/src"
+
+# plugins oh-my-zsh
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+
+# load oh-my-zsh
+source $ZSH/oh-my-zsh.sh
+
+# personal aliases
+alias e="nvim"
+alias cat="bat"
+alias ls="/usr/bin/lsd"
+alias explorer="xdg-open"
+alias ...="../.."
+alias ....="../../.."
+
+# oh-my-posh prompt
+eval "$(oh-my-posh init zsh --config ~/.theme.json)"
